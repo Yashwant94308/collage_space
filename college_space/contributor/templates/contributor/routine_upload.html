@@ -1,0 +1,27 @@
+{% extends "contributor/routines.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+<html>
+<head>
+    <script src="{% static 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js' %}"></script>
+</head>
+<body>
+
+
+
+  &nbsp;<form method="post" enctype="multipart/form-data" id="submission">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+      </form>
+
+
+
+
+</body>
+</html>
+
+{% endblock content %}

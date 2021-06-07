@@ -1,0 +1,116 @@
+{% extends "contributor/base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+  <style>
+    a.-upp{color:red;
+    text-align:right;}
+    a.-upp:hover{color:blue;}
+  </style>
+
+
+
+  <title>Routine</title>
+
+</head>
+<body>
+
+
+<button type="button" class="btn btn-success" style="margin-left:83%">
+  <a href="{% url 'contributor:routine_upload' %}">
+  <h5 style="color:white">
+    UPLOAD-NEW-ROUTINE
+  </h5>
+</a>
+</button>
+ <header style="position: relative;width:100%">
+        <img src="{% static 'header2.jpg' %}" style="width:100%;height:150px;">
+        <div class="centered" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+
+          <h4 style="color:	#C0C0C0">&nbsp;CATEGORY</h4>
+          <hr style="background-color:white;">
+          <h1 style="color:white;">ROUTINES</h1>
+        </div>
+  </header>
+
+
+
+<div style="background-color:black" class="section">
+
+  <div class="container">
+    <br>
+    {% for obj in documents %}
+
+      <div style="background-color:white" class="jumbotron">
+        <h2>&nbsp;&nbsp;{{ obj.routine_description }}</h2>
+        <p>&nbsp;&nbsp; {{obj.routine_uploaded_at}} / {{obj.routine_uploader_name}}</p>
+        <br>
+        <br>
+        <br>
+        &nbsp;&nbsp;<button><a href="{{obj.document_routine.url }}"> Download </a></button>
+      </div>
+    {% endfor %}
+  </div>
+    <div style="background-color:black;color:white;padding:70px"></div>
+  </div>
+
+<footer style="background-color:black" class="page-footer font-small">
+  <!-- Footer Links -->
+
+    <div style="background-color:lightgrey" class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a href="{% url 'contributor:index' %}" title="Go to home page"> CollageContributor.Com</a>
+      <a onclick="topFunction()" id="myBtn" title="Go to top" href="" class="-upp"><h5>SCROLL-UP</h5>
+      </a>
+
+
+
+
+
+
+    <script>
+          //Get the button
+          var mybutton = document.getElementById("myBtn");
+
+          // When the user scrolls down 20px from the top of the document, show the button
+          window.onscroll = function() {scrollFunction()};
+
+          function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              mybutton.style.display = "block";
+            } else {
+              mybutton.style.display = "none";
+            }
+          }
+
+          // When the user clicks on the button, scroll to the top of the document
+          function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+          }
+    </script>
+    </div>
+
+</footer>
+
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+
+<script>
+    $(window).on("load",function(){
+     $(".loader-wrapper").fadeOut("slow");
+});
+</script>
+
+
+
+
+
+</body>
+</html>
+{% endblock content %}

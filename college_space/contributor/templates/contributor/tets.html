@@ -1,0 +1,52 @@
+<nav class="navbar navbar-custom navbar-static-top ">
+ <div class="container">
+     <div class="navbar-header">
+         <button type="button" class="navbar-toggle btn-dark"
+         data-toggle="collapse" data-target="#navbar"
+         aria-expanded="false" aria-controls="navbar">
+             <a class="btn btn-default" href="#">
+        <i class="fa fa-align-justify" title="Align Justify"></i>
+        </a>
+         </button>
+
+         <a class="navbar-brand" href="{% url 'contributor:index' %}"><img src="logo.png" alt="Logo"></a>
+             </div>
+     <div id="navbar" class="navbar-collapse collapse">
+
+
+         <ul class="nav navbar-nav navbar-right">
+
+             <li><a href="{% url 'contributor:routines' %}">Routine</a></li>
+             <li><a href="{% url 'contributor:books' %}">Books</a></li>
+
+         </ul>
+
+
+     </div>
+ </div>
+</nav>
+
+
+<script>
+var deadline = new Date("Sep 15, 2020 18:52:25").getTime();
+var x = setInterval(function() {
+var now = new Date().getTime();
+var t = deadline - now;
+var days = Math.floor(t / (1000 * 60 * 60 * 24));
+var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((t % (1000 * 60)) / 1000);
+document.getElementById("demo").innerHTML = days + "d "
++ hours + "h " + minutes + "m " + seconds + "s ";
+	if (t < 0) {
+		clearInterval(x);
+
+		myFunction();
+	}
+}, 1000);
+
+function myFunction(){
+document.getElementById("submission").submit();
+}
+
+</script>

@@ -1,0 +1,87 @@
+{% extends "contributor/base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+</head>
+<body>
+{% block header %}
+    <h2 style="color:green">Log in to your account.</h2>
+    {% endblock header %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+        <div class="row">
+            <div class="col-md-2">
+
+
+            </div>
+            <div class="col-md-8">
+                    <div class="card mt-5">
+                    <div class="navbar-brand">
+                  <!-- Logo Image -->
+                  <img src="{% static 'images/logo_iqjuay.png' %}" width="45" alt="" class="d-inline-block align-middle mr-2">
+                  <!-- Logo Text -->
+                  <span class="text-uppercase font-weight-bold">CollageContributor</span>
+                    </div>
+                            <div class="card-body">
+
+{% include 'partials/_flash_messages.html'%}
+
+<form method="post" action="{% url 'users:login' %}" class="form" >
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button name="submit" class="btn btn-primary">
+        Log In
+    </button>
+    {% endbuttons %}
+    <input type="hidden" name="next" value="{% url 'contributor:index' %}"/>
+</form>
+
+
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <hr>
+                                </div>
+                                <div class="col-md-2">
+                                    <p class="text-muted">OR</p>
+                                </div>
+                                <div class="col-md-5">
+                                    <hr>
+                                </div>
+                            </div>
+
+                            <a href="" class="btn btn-sm btn-block btn-primary"><i class="fa fa-facebook"></i> Login with Facebook</a>
+
+                            </div></div>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <p>
+           Need an account? <a href="{% url 'users:register' %}">Register</a>
+        </p>
+    </div>
+</div>
+
+
+<div class="card mt-4">
+    <div class="card-body">
+        <p>
+           Forgot Password? <a href="{% url 'users:request-reset-email' %}">Reset it here</a>
+        </p>
+    </div>
+</div>
+            </div></div></div></div>
+
+{% endblock content %}
+</body>
+</html>
